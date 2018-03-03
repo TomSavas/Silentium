@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4613277743351510}
   - component: {fileID: 212781575837295154}
-  - component: {fileID: 114985282033875906}
   - component: {fileID: 60874634362483072}
   m_Layer: 0
   m_Name: Vision
@@ -73,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1519630735166878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.1913595, y: -0.29616117, z: 0}
+  m_LocalPosition: {x: -9.65, y: 0.09, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 4613277743351510}
@@ -183,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61874ecfe357364d9a8ad96ef915bcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Police: {fileID: 0}
+  Police: {fileID: 114200804657983758}
 --- !u!114 &114035230289556528
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,12 +232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d33a9b2b7f6b942ba39cc6b52884b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   currentWaypoint: 0
   mode: 0
-  soundOriginGameObject: {fileID: 0}
-  soundOrigin: {fileID: 0}
   player: {fileID: 0}
+  Vision: {fileID: 1028499841227968}
 --- !u!114 &114641120426048986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,19 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5f7bf41eb4eaf24f9954d604f1e932e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Police: {fileID: 0}
---- !u!114 &114985282033875906
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1028499841227968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2aa58237a99841eba78bd3748b63b3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Civilian: {fileID: 0}
+  Police: {fileID: 114200804657983758}
 --- !u!212 &212781575837295154
 SpriteRenderer:
   m_ObjectHideFlags: 1

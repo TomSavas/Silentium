@@ -13,7 +13,7 @@ public class Randomizer {
         Vector2 tempV = Random.insideUnitCircle * radius;
         temp.transform.position += new Vector3(tempV.x, tempV.y, 0);
         Node tempNode = grid.NodeFromWorldPoint(temp.transform.position);
-        Debug.Log(tempNode.walkable);
+        //Debug.Log(tempNode.walkable);
         if (!tempNode.walkable || Vector3.Distance(startingPosition, temp.transform.position)<min) goto search;
         else return temp.transform;
     }
