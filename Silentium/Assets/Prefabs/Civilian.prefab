@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114369812529950952}
   - component: {fileID: 114326730282911766}
   - component: {fileID: 50338466604205590}
+  - component: {fileID: 114909438543973124}
   m_Layer: 10
   m_Name: Civilian
   m_TagString: NPC
@@ -58,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911434254588212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8000579, y: 2.4245923, z: 0}
+  m_LocalPosition: {x: -1.8, y: 1.29, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 4448679368404126}
@@ -207,6 +208,19 @@ MonoBehaviour:
   speed: 0.05
   health: 1
   damage: 1
+--- !u!114 &114909438543973124
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911434254588212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc16508bb03c594183c66cee556f617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  vision: {fileID: 1531536690053486}
 --- !u!114 &114936706154156554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,7 +238,9 @@ MonoBehaviour:
   currentWaypoint: 0
   speed: 3
   triggered: 0
-  panicCooldown: 2
+  panicCooldown: 10
+  goingBack: 0
+  Grid: {fileID: 0}
   Vision: {fileID: 1531536690053486}
 --- !u!114 &114969279244406188
 MonoBehaviour:
