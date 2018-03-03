@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PersonStats : MonoBehaviour {
-	public const float DEFAULT_WALKING_SPEED = 0.05f;
+	public const float DEFAULT_WALKING_SPEED = 0.07f;
 	public const float DEFAULT_RUNNING_SPEED = DEFAULT_WALKING_SPEED * 1.5f;
 	public const float DEFAULT_SNEAKING_SPEED = DEFAULT_WALKING_SPEED * 0.33f;
 

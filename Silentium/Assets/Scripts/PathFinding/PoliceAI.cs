@@ -14,6 +14,7 @@ public class PoliceAI : MonoBehaviour
     public GameObject player;
     bool seePlayer = false;
     public GameObject Vision;
+    float followCooldown;
     #endregion
 
     void Start()
@@ -26,6 +27,7 @@ public class PoliceAI : MonoBehaviour
     void FixedUpdate()
     {
         if(!seePlayer)cooldown += Time.deltaTime;
+        followCooldown += Time.deltaTime;
         #region Waypoints (mode 0)
         if (mode == 0)
         {
@@ -49,7 +51,7 @@ public class PoliceAI : MonoBehaviour
     }
     public void OnPathEnd()
     {
-        Destroy(gameObject.GetComponent<Unit>().target.gameObject);
+        //Destroy(gameObject.GetComponent<Unit>().target.gameObject);
         if (mode == 1)
         {
             seePlayer = false;
@@ -61,14 +63,18 @@ public class PoliceAI : MonoBehaviour
     }
     public void Chase()
     {
-         cooldown = 0;
-         GameObject temp = new GameObject();
-         Destroy(temp, 10);
-         temp.transform.position = player.transform.position;
-         gameObject.GetComponent<Unit>().target = temp.transform;
-         gameObject.GetComponent<Unit>().PathFindToTarget();
-         seePlayer = true;
-         mode = 1;
+        if (followCooldown > 0.3f)
+        {
+            cooldown = 0;
+            GameObject temp = new GameObject();
+            Destroy(temp, 10);
+            temp.transform.position = player.transform.position;
+            gameObject.GetComponent<Unit>().target = temp.transform;
+            gameObject.GetComponent<Unit>().PathFindToTarget();
+            seePlayer = true;
+            mode = 1;
+            followCooldown = 0;
+        }
     }
 
 }
