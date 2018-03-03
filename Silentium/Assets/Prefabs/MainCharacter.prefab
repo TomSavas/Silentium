@@ -163,7 +163,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1300714293050106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.92, y: 0, z: 0}
+  m_LocalPosition: {x: -5.67332, y: -3.3230586, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4991542058306868}
@@ -367,8 +367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41d543af940c84735aaf8481dab2a237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knife: {fileID: 1448647370932260}
-  slashingTime: 0.25
+  slash: {fileID: 0}
 --- !u!114 &114168457402297260
 MonoBehaviour:
   m_ObjectHideFlags: 1
