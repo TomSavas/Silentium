@@ -20,11 +20,13 @@ public class MainCharacterMovement : MonoBehaviour {
 
 	private StepSoundMaker _stepSoundMaker;
 	private PersonStats _personStats;
+	private Animator _animator;
 
 	void Start () {
 		_stepSoundMaker = GetComponent<StepSoundMaker> ();
 		_personStats = GetComponent<PersonStats> ();
 		_personStats.SetWalkingSpeed ();
+		_animator = GetComponent<Animator> ();
 		staminaBar.SetActive(false);
 	}
 	
@@ -51,11 +53,20 @@ public class MainCharacterMovement : MonoBehaviour {
 		_stepSoundMaker.EnableSneakingSteps ();
 	}
 		
+	void Update() {
+		FaceTheDirectionOfWalking ();
+	}
+
 	void FixedUpdate () {
-		
 		float vertical = Input.GetAxis ("Vertical") * _personStats.speed;
 		float horizontal = Input.GetAxis ("Horizontal") * _personStats.speed;
 		transform.position += new Vector3 (horizontal, vertical, 0);
+
+		if (vertical != 0 || horizontal != 0) {
+			_animator.SetBool ("Walk", true);
+		} else {
+			_animator.SetBool ("Walk", false);
+		}
 
 		if (Input.GetKeyDown (KeyCode.LeftShift)) {
 			if (!sneaking && stamina > 0)
@@ -92,4 +103,12 @@ public class MainCharacterMovement : MonoBehaviour {
 
 	}
 
+	private void FaceTheDirectionOfWalking() {
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) {
+			var verticalAngle = Input.GetKey(KeyCode.W) ? 0 : Input.GetKey(KeyCode.S) ? -180 : 0;
+			var horizontalAngle = Input.GetKey(KeyCode.D) ? -90 : Input.GetKey(KeyCode.A) ? 90 : 0;
+			var twoDirectionsPressed = (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D)) && (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S));
+			transform.rotation = Quaternion.Euler (0, 0, (verticalAngle + horizontalAngle) / (twoDirectionsPressed ? 2 : 1));
+		}
+	}
 }
