@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4448679368404126}
   - component: {fileID: 212487184310536288}
   - component: {fileID: 114168682311075780}
-  - component: {fileID: 114890320320603230}
   - component: {fileID: 60837889935739108}
   m_Layer: 0
   m_Name: Vision
@@ -40,9 +39,14 @@ GameObject:
   - component: {fileID: 4237764919069962}
   - component: {fileID: 212691656369743744}
   - component: {fileID: 114936706154156554}
-  m_Layer: 0
+  - component: {fileID: 60541184799520924}
+  - component: {fileID: 114969279244406188}
+  - component: {fileID: 114369812529950952}
+  - component: {fileID: 114326730282911766}
+  - component: {fileID: 50338466604205590}
+  m_Layer: 10
   m_Name: Civilian
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,6 +78,59 @@ Transform:
   m_Father: {fileID: 4237764919069962}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50338466604205590
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911434254588212}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!60 &60541184799520924
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911434254588212}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.2, y: 0.2}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.049999997, y: 0.099999994}
+      - {x: -0.099999994, y: 0.044999998}
+      - {x: -0.099999994, y: -0.03}
+      - {x: -0.074999996, y: -0.085}
+      - {x: -0.065, y: -0.099999994}
+      - {x: 0.06, y: -0.099999994}
+      - {x: 0.099999994, y: -0.074999996}
+      - {x: 0.099999994, y: 0.055}
+      - {x: 0.049999997, y: 0.099999994}
 --- !u!60 &60837889935739108
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -124,20 +181,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2aa58237a99841eba78bd3748b63b3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Civilian: {fileID: 1911434254588212}
---- !u!114 &114890320320603230
+  Civilian: {fileID: 114936706154156554}
+--- !u!114 &114326730282911766
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1531536690053486}
-  m_Enabled: 0
+  m_GameObject: {fileID: 1911434254588212}
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307acfaa47de54095a8bedeaac727935, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d065397ea24f4bc6a986c18cfdebbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.0066000004
-  triggered: 0
+--- !u!114 &114369812529950952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911434254588212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c42f7a77e85d47de86a8a44e6159333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.05
+  health: 1
+  damage: 1
 --- !u!114 &114936706154156554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -152,12 +221,23 @@ MonoBehaviour:
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   currentWaypoint: 0
   speed: 3
   triggered: 0
+  panicCooldown: 2
   Vision: {fileID: 1531536690053486}
+--- !u!114 &114969279244406188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911434254588212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c93fb96dd3a408d8bd1e117bc719df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Civilian: {fileID: 114936706154156554}
 --- !u!212 &212487184310536288
 SpriteRenderer:
   m_ObjectHideFlags: 1

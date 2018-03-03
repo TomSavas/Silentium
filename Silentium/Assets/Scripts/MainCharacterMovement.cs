@@ -5,10 +5,7 @@ using UnityEngine;
 public class MainCharacterMovement : MonoBehaviour {
 
 	// Use this for initialization
-	float speed = 0.2f;
-	float walkingSpeed = 0.05f;
-	float runningSpeedMultiplyer = 1.5f;
-	float sneakingSpeedMultiplyer = 0.33f;
+	[SerializeField]
 	float depletionRate = 10f; 					
 	float stamina = 1f;
 	float staminaDepletionSpeed = 0.0010f;
@@ -22,61 +19,58 @@ public class MainCharacterMovement : MonoBehaviour {
 	public GameObject staminaBarFilling;
 
 	private StepSoundMaker _stepSoundMaker;
+	private PersonStats _personStats;
 
 	void Start () {
-		_stepSoundMaker = GetComponent<StepSoundMaker> (); 
-		speed = walkingSpeed;
+		_stepSoundMaker = GetComponent<StepSoundMaker> ();
+		_personStats = GetComponent<PersonStats> ();
+		_personStats.SetWalkingSpeed ();
 		staminaBar.SetActive(false);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
  	void Walk() {
-		speed = walkingSpeed;
+		_personStats.SetWalkingSpeed ();
 		running = false;
 		sneaking = false;
 		timeSinceStaminaUsed = Time.time;
-		/* savui: particle system default here */
 		_stepSoundMaker.EnableWalkingSteps ();
 
 	}
 
 	void Run() {
 		staminaBar.SetActive(true);
-		//staminaBarFilling.SetActive
 		staminaBarFilling.transform.localScale = new Vector3 (stamina, 1, 0);
-		speed = speed * runningSpeedMultiplyer;
+		_personStats.SetRunningSpeed ();
 		running = true;
-		/* savui: particle system change here */
 		_stepSoundMaker.EnableRunningSteps ();
 	}
 
 	void Sneak() {
-		speed = speed * sneakingSpeedMultiplyer;
+		_personStats.SetSneakingSpeed ();
 		sneaking = true;
-		/* savui: particle system change here */
 		_stepSoundMaker.EnableSneakingSteps ();
 	}
 		
 	void FixedUpdate () {
 		
-		float vertical = Input.GetAxis ("Vertical") * speed;
-		float horizontal = Input.GetAxis ("Horizontal") * speed;
+		float vertical = Input.GetAxis ("Vertical") * _personStats.speed;
+		float horizontal = Input.GetAxis ("Horizontal") * _personStats.speed;
 		transform.position += new Vector3 (horizontal, vertical, 0);
-		if(Input.GetKeyDown(KeyCode.LeftShift) && !sneaking) {
-			Run();
+
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			if (!sneaking && stamina > 0)
+				Run ();
+		} else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+			if (running)
+				Walk ();
 		}
-		if(Input.GetKeyUp(KeyCode.LeftShift) && running) {
-			Walk();
-		}
-		if (Input.GetKeyDown (KeyCode.LeftControl) && !running) {
-			Sneak ();
-		}
-		if (Input.GetKeyUp (KeyCode.LeftControl) && sneaking) {
-			Walk ();
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			if (!running)
+				Sneak ();
+		} else if (Input.GetKeyUp (KeyCode.Space)){
+			if (sneaking)
+				Walk ();
 		}
 		
 		if (running && (vertical != 0 || horizontal != 0)) {
