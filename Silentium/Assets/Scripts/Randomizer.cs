@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Randomizer {
 
-    bool lol = false;
     static public Transform FindRandomPointInArea(float radius, float min, Vector3 startingPosition, Grid grid)
     {
         GameObject temp = new GameObject();
