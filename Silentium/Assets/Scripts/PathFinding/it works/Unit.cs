@@ -21,6 +21,7 @@ public class Unit : MonoBehaviour {
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
 		if (pathSuccessful) {
+            print("lol");
             
 			path = newPath;
 			targetIndex = 0;
@@ -38,12 +39,10 @@ public class Unit : MonoBehaviour {
 			if (transform.position == currentWaypoint) {
 				targetIndex ++;
 				if (targetIndex >= path.Length) {
-                    //if(gameObject.GetComponent<PoliceAI>()!=null) gameObject.GetComponent<PoliceAI>().changeMode();
                     if (PathEnd != null)
                     {
                         PathEnd();
                     }
-                    //if (gameObject.GetComponent<PoliceAI>() != null) gameObject.GetComponent<PoliceAI>().changeMode();
                     yield break;
                     
 				}
