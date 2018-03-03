@@ -21,6 +21,9 @@ public class VisionTriggered : MonoBehaviour {
 			Civilian.GetComponent<CivilianAI> ().speed *= 2;
 			Civilian.GetComponent<CivilianAI> ().triggered = true;
 			Civilian.GetComponent<CivilianAI> ().currentWaypoint--;
+			if (Civilian.GetComponent<CivilianAI> ().currentWaypoint < 0) {
+				Civilian.GetComponent<CivilianAI> ().currentWaypoint = Civilian.GetComponent<CivilianAI> ().waypoints.Capacity - 1;
+			}
 
 		}
 	}
