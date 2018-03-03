@@ -21,7 +21,7 @@ public class Unit : MonoBehaviour {
 
 	public void OnPathFound(Vector3[] newPath, bool pathSuccessful) {
 		if (pathSuccessful) {
-            print("lol");
+            //print("lol");
             
 			path = newPath;
 			targetIndex = 0;

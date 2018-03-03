@@ -63,7 +63,7 @@ public class PoliceAI : MonoBehaviour
     }
     public void Chase()
     {
-        if (followCooldown > 0.3f)
+        if (followCooldown > 0.2f)
         {
             cooldown = 0;
             GameObject temp = new GameObject();
