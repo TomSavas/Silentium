@@ -18,6 +18,7 @@ public class Grid : MonoBehaviour {
 		gridSizeX = Mathf.RoundToInt(gridWorldSize.x/nodeDiameter);
 		gridSizeY = Mathf.RoundToInt(gridWorldSize.y/nodeDiameter);
 		CreateGrid();
+        //print(NodeFromWorldPoint( grid[0, 0].worldPosition).gridX);
 	}
 
 	public int MaxSize {
@@ -36,7 +37,7 @@ public class Grid : MonoBehaviour {
                 //print(worldPoint);
                 worldPoint = new Vector3(worldPoint.x, worldPoint.y, 0);
 				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
-                var occupied = Physics2D.OverlapCircleAll(worldPoint, nodeRadius, LayerMask.NameToLayer("NPC")).Length != 0;
+                //var occupied = Physics2D.OverlapCircleAll(worldPoint, nodeRadius, LayerMask.NameToLayer("NPC")).Length != 0;
                 grid[x,y] = new Node(walkable, worldPoint, x,y);
 
             }
@@ -81,8 +82,8 @@ public class Grid : MonoBehaviour {
 		if (grid != null && displayGridGizmos) {
 			foreach (Node n in grid) {
                 Gizmos.color = (n.walkable)?Color.white:Color.red;
-                if (Physics2D.OverlapCircleAll(new Vector2(n.gridX, n.gridY), nodeRadius, LayerMask.NameToLayer("NPC")).Length != 0)
-                    Gizmos.color = Color.green;
+               // if (Physics2D.OverlapCircleAll(new Vector2(n.gridX, n.gridY), nodeRadius, LayerMask.NameToLayer("NPC")).Length != 0)
+                 //   Gizmos.color = Color.green;
 				Gizmos.DrawCube(n.worldPosition, new Vector3(1,1,0) * (nodeDiameter-nodeDiameter*.05f));
 			}
 		}
