@@ -105,10 +105,10 @@ public class MainCharacterMovement : MonoBehaviour {
 
 	private void FaceTheDirectionOfWalking() {
 		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S)) {
-			var verticalAngle = Input.GetKey(KeyCode.W) ? 0 : Input.GetKey(KeyCode.S) ? 180 * 2 : 0;
-			var horizontalAngle = Input.GetKey(KeyCode.D) ? -90 * 2 : Input.GetKey(KeyCode.A) ? 90 * 2 : 0;
+			var verticalAngle = Input.GetKey(KeyCode.W) ? 0 : Input.GetKey(KeyCode.S) ? -180 : 0;
+			var horizontalAngle = Input.GetKey(KeyCode.D) ? -90 : Input.GetKey(KeyCode.A) ? 90 : 0;
 			var twoDirectionsPressed = (Input.GetKey (KeyCode.A) || Input.GetKey (KeyCode.D)) && (Input.GetKey (KeyCode.W) || Input.GetKey (KeyCode.S));
-			transform.rotation = Quaternion.Euler (0, 0, (verticalAngle + horizontalAngle) / (twoDirectionsPressed ? 4 : 2));
+			transform.rotation = Quaternion.Euler (0, 0, (verticalAngle + horizontalAngle) / (twoDirectionsPressed ? 2 : 1));
 		}
 	}
 }
