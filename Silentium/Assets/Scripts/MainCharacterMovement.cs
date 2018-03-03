@@ -29,35 +29,26 @@ public class MainCharacterMovement : MonoBehaviour {
 		staminaBar.SetActive(false);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
  	void Walk() {
 		speed = walkingSpeed;
 		running = false;
 		sneaking = false;
 		timeSinceStaminaUsed = Time.time;
-		/* savui: particle system default here */
 		_stepSoundMaker.EnableWalkingSteps ();
 
 	}
 
 	void Run() {
 		staminaBar.SetActive(true);
-		//staminaBarFilling.SetActive
 		staminaBarFilling.transform.localScale = new Vector3 (stamina, 1, 0);
 		speed = speed * runningSpeedMultiplyer;
 		running = true;
-		/* savui: particle system change here */
 		_stepSoundMaker.EnableRunningSteps ();
 	}
 
 	void Sneak() {
 		speed = speed * sneakingSpeedMultiplyer;
 		sneaking = true;
-		/* savui: particle system change here */
 		_stepSoundMaker.EnableSneakingSteps ();
 	}
 		
