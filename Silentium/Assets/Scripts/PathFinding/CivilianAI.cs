@@ -10,13 +10,14 @@ public class CivilianAI : MonoBehaviour {
     public float speed = 3f;
 	public bool triggered = false;
 	public int panicCooldown;
+    public bool goingBack=false;
     public GameObject Grid;
 
 	public GameObject Vision;
 
     public void Start()
     {
-
+        gameObject.GetComponent<Unit>().PathEnd += OnPathEnd;
     }
 
     private void FixedUpdate () {
@@ -31,7 +32,7 @@ public class CivilianAI : MonoBehaviour {
 			if (currentWaypoint < 0)
 				currentWaypoint = waypoints.Capacity - 1;
 		}
-        if (!triggered)
+        if (!triggered && !goingBack)
         {
             var dir = waypoints[currentWaypoint].position - transform.position;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
@@ -50,7 +51,7 @@ public class CivilianAI : MonoBehaviour {
 				currentWaypoint = waypoints.Capacity - 1;
 			}
 
-            gameObject.GetComponent<Unit>().target = Randomizer.FindRandomPointInArea(7, Grid.GetComponent<Grid>());
+            gameObject.GetComponent<Unit>().target = Randomizer.FindRandomPointInArea(10, 5, transform.position, Grid.GetComponent<Grid>());
             gameObject.GetComponent<Unit>().PathFindToTarget();
 
             StartCoroutine(Reset());
@@ -66,8 +67,18 @@ public class CivilianAI : MonoBehaviour {
 		if (triggered) {
 			speed /= 2;
 			triggered = false;
-		}
+            goingBack = true;
+            gameObject.GetComponent<Unit>().target = waypoints[currentWaypoint];
+            gameObject.GetComponent<Unit>().PathFindToTarget();
+        }
 	}
+    void OnPathEnd()
+    {
+        if (goingBack == true)
+        {
+            goingBack = false;
+        }
+    }
 }
 
         
