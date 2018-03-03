@@ -21,7 +21,10 @@ public class MainCharacterMovement : MonoBehaviour {
 	public GameObject staminaBar;
 	public GameObject staminaBarFilling;
 
+	private StepSoundMaker _stepSoundMaker;
+
 	void Start () {
+		_stepSoundMaker = GetComponent<StepSoundMaker> (); 
 		speed = walkingSpeed;
 		staminaBar.SetActive(false);
 	}
@@ -37,6 +40,7 @@ public class MainCharacterMovement : MonoBehaviour {
 		sneaking = false;
 		timeSinceStaminaUsed = Time.time;
 		/* savui: particle system default here */
+		_stepSoundMaker.EnableWalkingSteps ();
 
 	}
 
@@ -47,12 +51,14 @@ public class MainCharacterMovement : MonoBehaviour {
 		speed = speed * runningSpeedMultiplyer;
 		running = true;
 		/* savui: particle system change here */
+		_stepSoundMaker.EnableRunningSteps ();
 	}
 
 	void Sneak() {
 		speed = speed * sneakingSpeedMultiplyer;
 		sneaking = true;
 		/* savui: particle system change here */
+		_stepSoundMaker.EnableSneakingSteps ();
 	}
 		
 	void FixedUpdate () {
