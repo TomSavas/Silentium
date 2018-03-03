@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Grass
+  m_Name: Street_pavconnect_corner_rt(good)
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: d53f0825a7ecb814e9f85a595adc055b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f809470526f7e47ae9087f970089c5ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
