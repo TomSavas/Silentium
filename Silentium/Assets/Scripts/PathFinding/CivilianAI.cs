@@ -31,14 +31,11 @@ public class CivilianAI : MonoBehaviour {
 			if (currentWaypoint < 0)
 				currentWaypoint = waypoints.Capacity - 1;
 		}
-        if (!triggered)
-        {
-            var dir = waypoints[currentWaypoint].position - transform.position;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
-            //transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
-        }
+        var dir = waypoints[currentWaypoint].position - transform.position;
+        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+		Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+		transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed*Time.deltaTime);
+		//transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
     }
 
 	public void TriggerPanic() {
@@ -71,3 +68,12 @@ public class CivilianAI : MonoBehaviour {
 		}
 	}
 }
+
+        if (!triggered)
+        {
+            var dir = waypoints[currentWaypoint].position - transform.position;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+            //transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
+        }
