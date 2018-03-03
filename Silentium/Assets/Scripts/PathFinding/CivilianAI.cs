@@ -51,6 +51,9 @@ public class CivilianAI : MonoBehaviour {
 				currentWaypoint = waypoints.Capacity - 1;
 			}
 
+            Node tempNode = Grid.GetComponent<Grid>().NodeFromWorldPoint(transform.position);
+            Debug.Log(tempNode.walkable);
+
             gameObject.GetComponent<Unit>().target = Randomizer.FindRandomPointInArea(10, 5, transform.position, Grid.GetComponent<Grid>());
             gameObject.GetComponent<Unit>().PathFindToTarget();
 

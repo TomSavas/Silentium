@@ -60,6 +60,7 @@ public class Pathfinding : MonoBehaviour {
 		}
 		yield return null;
 		if (pathSuccess) {
+            print("found path");
 			waypoints = RetracePath(startNode,targetNode);
 		}
 		requestManager.FinishedProcessingPath(waypoints,pathSuccess);
