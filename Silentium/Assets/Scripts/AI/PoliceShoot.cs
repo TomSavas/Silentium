@@ -18,7 +18,8 @@ public class PoliceShoot : MonoBehaviour {
         int layermask1 = 1 << layer1;
         int layermask2 = 1 << layer2;
         int finalmask = layermask1 | layermask2;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up, 10, finalmask);
+        //Debug.DrawRay(transform.position, transform.up * 5, Color.red, 0.5f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up, 10, finalmask);
         if (hit == true)
         {
             print("i see you");
