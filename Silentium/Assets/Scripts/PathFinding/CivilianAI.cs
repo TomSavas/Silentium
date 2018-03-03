@@ -36,9 +36,8 @@ public class CivilianAI : MonoBehaviour {
         {
             var dir = waypoints[currentWaypoint].position - transform.position;
             var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
-            //transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
         }
     }
 
