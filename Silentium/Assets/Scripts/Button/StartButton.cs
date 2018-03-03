@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StartButton : MonoBehaviour {
 
+	public GameObject chooseLevel;
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +16,8 @@ public class StartButton : MonoBehaviour {
 	}
 
 	public void StartSelection() {
-		Debug.Log("SelectionStarted");
+		//Debug.Log("SelectionStarted");
+		chooseLevel.SetActive(true);
+		gameObject.SetActive (false);
 	}
 }
