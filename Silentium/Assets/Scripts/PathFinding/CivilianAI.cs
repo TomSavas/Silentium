@@ -31,11 +31,14 @@ public class CivilianAI : MonoBehaviour {
 			if (currentWaypoint < 0)
 				currentWaypoint = waypoints.Capacity - 1;
 		}
-        var dir = waypoints[currentWaypoint].position - transform.position;
-        var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-		transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed*Time.deltaTime);
-		//transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
+        if (!triggered)
+        {
+            var dir = waypoints[currentWaypoint].position - transform.position;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
+            //transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
+        }
     }
 
 	public void TriggerPanic() {
@@ -47,8 +50,6 @@ public class CivilianAI : MonoBehaviour {
 				currentWaypoint = waypoints.Capacity - 1;
 			}
 
-            
-            //while( Vector3.Distance( randomPoint)
             gameObject.GetComponent<Unit>().target = Randomizer.FindRandomPointInArea(7, Grid.GetComponent<Grid>());
             gameObject.GetComponent<Unit>().PathFindToTarget();
 
@@ -69,11 +70,4 @@ public class CivilianAI : MonoBehaviour {
 	}
 }
 
-        if (!triggered)
-        {
-            var dir = waypoints[currentWaypoint].position - transform.position;
-            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            Vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWaypoint].position, speed * Time.deltaTime);
-            //transform.position = new Vector3 (transform.position.x, transform.position.y, 0);
-        }
+        
