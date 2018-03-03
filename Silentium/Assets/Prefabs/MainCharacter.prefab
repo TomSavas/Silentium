@@ -144,7 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278c26b18d75547a4ab6f660ef1324c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundParticlePrefab: {fileID: 0}
+  SoundParticlePrefab: {fileID: 198221251772166434, guid: 7c1d162e33c084a0caf6ac197958c32b,
+    type: 2}
   SteppingFrequency: 1
 --- !u!114 &114168457402297260
 MonoBehaviour:
@@ -3697,7 +3698,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a189a00b96f334c009f307bcfd9aa552, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d5c718300d8f4d528480df1ca435df3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3741,7 +3742,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 341f4b5e149c94085b403e6a024578b0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fd2be40a62b574e2bb6643aad2d6f492, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
