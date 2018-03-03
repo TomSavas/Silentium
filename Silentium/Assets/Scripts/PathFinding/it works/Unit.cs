@@ -8,6 +8,7 @@ public class Unit : MonoBehaviour {
 	float speed = 3;
 	Vector3[] path;
 	int targetIndex;
+    public GameObject vision;
 
 	void Start() {
 		
@@ -28,14 +29,20 @@ public class Unit : MonoBehaviour {
 		}
 	}
 
-	IEnumerator FollowPath() {
+    public delegate void Situation();
+    public Situation PathEnd;
+
+    IEnumerator FollowPath() {
 		Vector3 currentWaypoint = path[0];
 		while (true) {
 			if (transform.position == currentWaypoint) {
 				targetIndex ++;
 				if (targetIndex >= path.Length) {
-                    //print("end");
-                    if(gameObject.GetComponent<PoliceAI>()!=null) gameObject.GetComponent<PoliceAI>().changeMode();
+                    //if(gameObject.GetComponent<PoliceAI>()!=null) gameObject.GetComponent<PoliceAI>().changeMode();
+                    if (PathEnd != null)
+                    {
+                        PathEnd();
+                    }
                     //if (gameObject.GetComponent<PoliceAI>() != null) gameObject.GetComponent<PoliceAI>().changeMode();
                     yield break;
                     
@@ -43,11 +50,17 @@ public class Unit : MonoBehaviour {
 				currentWaypoint = path[targetIndex];
 			}
 
-			transform.position = Vector3.MoveTowards(transform.position,currentWaypoint,speed * Time.deltaTime);
-			yield return null;
+            var dir = currentWaypoint - transform.position;
+            var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            vision.transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+            transform.position = Vector3.MoveTowards(transform.position,currentWaypoint,speed * Time.deltaTime);
+            
+
+            yield return null;
 
 		}
 	}
+   
 
     public void OnDrawGizmos() {
 		if (path != null) {

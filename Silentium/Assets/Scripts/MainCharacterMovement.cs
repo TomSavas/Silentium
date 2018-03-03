@@ -5,7 +5,8 @@ using UnityEngine;
 public class MainCharacterMovement : MonoBehaviour {
 
 	// Use this for initialization
-	float speed = 0.2f;
+	[SerializeField]
+	float speed;
 	float walkingSpeed = 0.05f;
 	float runningSpeedMultiplyer = 1.5f;
 	float sneakingSpeedMultiplyer = 0.33f;
@@ -29,35 +30,26 @@ public class MainCharacterMovement : MonoBehaviour {
 		staminaBar.SetActive(false);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
  	void Walk() {
 		speed = walkingSpeed;
 		running = false;
 		sneaking = false;
 		timeSinceStaminaUsed = Time.time;
-		/* savui: particle system default here */
 		_stepSoundMaker.EnableWalkingSteps ();
 
 	}
 
 	void Run() {
 		staminaBar.SetActive(true);
-		//staminaBarFilling.SetActive
 		staminaBarFilling.transform.localScale = new Vector3 (stamina, 1, 0);
-		speed = speed * runningSpeedMultiplyer;
+		speed = walkingSpeed * runningSpeedMultiplyer;
 		running = true;
-		/* savui: particle system change here */
 		_stepSoundMaker.EnableRunningSteps ();
 	}
 
 	void Sneak() {
-		speed = speed * sneakingSpeedMultiplyer;
+		speed = walkingSpeed * sneakingSpeedMultiplyer;
 		sneaking = true;
-		/* savui: particle system change here */
 		_stepSoundMaker.EnableSneakingSteps ();
 	}
 		
@@ -66,17 +58,21 @@ public class MainCharacterMovement : MonoBehaviour {
 		float vertical = Input.GetAxis ("Vertical") * speed;
 		float horizontal = Input.GetAxis ("Horizontal") * speed;
 		transform.position += new Vector3 (horizontal, vertical, 0);
-		if(Input.GetKeyDown(KeyCode.LeftShift) && !sneaking) {
-			Run();
+
+		if (Input.GetKeyDown (KeyCode.LeftShift)) {
+			if (!sneaking && stamina > 0)
+				Run ();
+		} else if (Input.GetKeyUp(KeyCode.LeftShift)) {
+			if (running)
+				Walk ();
 		}
-		if(Input.GetKeyUp(KeyCode.LeftShift) && running) {
-			Walk();
-		}
-		if (Input.GetKeyDown (KeyCode.LeftControl) && !running) {
-			Sneak ();
-		}
-		if (Input.GetKeyUp (KeyCode.LeftControl) && sneaking) {
-			Walk ();
+
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			if (!running)
+				Sneak ();
+		} else if (Input.GetKeyUp (KeyCode.Space)){
+			if (sneaking)
+				Walk ();
 		}
 		
 		if (running && (vertical != 0 || horizontal != 0)) {

@@ -16,12 +16,13 @@ public class PoliceAI : MonoBehaviour
 
     void Start()
     {
+        gameObject.GetComponent<Unit>().PathEnd += OnPathEnd;
         soundOriginGameObject = new GameObject();
         soundOrigin = soundOriginGameObject.transform;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         #region Mode control
@@ -32,21 +33,6 @@ public class PoliceAI : MonoBehaviour
             mode = 1;
             changeAIMode();
         }
-        /*if (mode == 1)
-        {
-            if (Vector3.Distance(transform.position, soundOrigin.position) < 0.3f)
-            {
-                mode = 2;
-                changeAIMode();
-            }
-        }
-        if (mode == 2)
-        {
-            if (Vector3.Distance(transform.position, waypoints[currentWaypoint].position) < 0.3f)
-            {
-                mode = 0;
-            }
-        }*/
 
         #endregion
         #region Waypoints (mode 0)
@@ -81,7 +67,7 @@ public class PoliceAI : MonoBehaviour
         }
         #endregion
     }
-    public void changeMode()
+    public void OnPathEnd()
     {
         if (mode == 1)
         {
