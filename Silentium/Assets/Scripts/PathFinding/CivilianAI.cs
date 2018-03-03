@@ -77,6 +77,11 @@ public class CivilianAI : MonoBehaviour {
 	}
     void OnPathEnd()
     {
+        if (triggered)
+        {
+            gameObject.GetComponent<Unit>().target = Randomizer.FindRandomPointInArea(10, 5, transform.position, Grid.GetComponent<Grid>());
+            gameObject.GetComponent<Unit>().PathFindToTarget();
+        }
         if (goingBack == true)
         {
             goingBack = false;
