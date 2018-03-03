@@ -10,7 +10,6 @@ public class DamageReceiver : MonoBehaviour {
 	}
 
 	private void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log (collision.gameObject.tag);
 		if (collision.gameObject.CompareTag ("Weapon")) {
 			_personStats.health -= collision.gameObject.GetComponentInParent<PersonStats> ().damage;
 		}
