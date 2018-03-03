@@ -20,9 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4237764919069962}
   - component: {fileID: 212691656369743744}
-  - component: {fileID: 114139653051413722}
-  - component: {fileID: 114376790257322136}
-  - component: {fileID: 114387204458905520}
+  - component: {fileID: 114936706154156554}
   m_Layer: 0
   m_Name: Civilian
   m_TagString: Untagged
@@ -37,13 +35,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911434254588212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.179, y: -1.9, z: 0}
+  m_LocalPosition: {x: -1.8000579, y: 2.4245923, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114139653051413722
+--- !u!114 &114936706154156554
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,41 +49,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911434254588212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278c26b18d75547a4ab6f660ef1324c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4716d4f2373537a4fbf6681526b83c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SteppingFrequency: 1
---- !u!114 &114376790257322136
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911434254588212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d33a9b2b7f6b942ba39cc6b52884b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   currentWaypoint: 0
-  mode: 0
-  soundOriginGameObject: {fileID: 0}
-  soundOrigin: {fileID: 0}
---- !u!114 &114387204458905520
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1911434254588212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dc16508bb03c594183c66cee556f617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!212 &212691656369743744
 SpriteRenderer:
   m_ObjectHideFlags: 1
