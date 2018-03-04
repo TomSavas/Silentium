@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114326730282911766}
   - component: {fileID: 50338466604205590}
   - component: {fileID: 114909438543973124}
+  - component: {fileID: 95281611320129026}
   m_Layer: 10
   m_Name: Civilian
   m_TagString: NPC
@@ -76,8 +77,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911434254588212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalPosition: {x: 1.0180725, y: 3.824392, z: 0}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4448679368404126}
   - {fileID: 4488206361474376}
@@ -282,6 +283,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!95 &95281611320129026
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1911434254588212}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd449d234991848c6adb4793200c4081, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114168682311075780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,6 +386,7 @@ MonoBehaviour:
   panicCooldown: 3
   goingBack: 0
   Grid: {fileID: 0}
+  fearManager: {fileID: 0}
   Vision: {fileID: 1531536690053486}
 --- !u!114 &114969279244406188
 MonoBehaviour:
@@ -458,7 +477,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 9de93b5e406c11c4bbcb8b69d0730dc9, type: 3}
   m_Color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
   m_FlipX: 0
