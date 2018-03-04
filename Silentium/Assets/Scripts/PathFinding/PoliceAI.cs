@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,20 +15,20 @@ public class PoliceAI : MonoBehaviour
     public bool seePlayer = false;
     public GameObject Vision;
     float followCooldown;
-    float fearCooldown=0;
-    FearManager fearManager;
+    float fearCooldown = 0;
+    public FearManager fearManager;
     #endregion
 
     void Start()
     {
         gameObject.GetComponent<Unit>().PathEnd += OnPathEnd;
-        
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!seePlayer)cooldown += Time.deltaTime;
+        if (!seePlayer) cooldown += Time.deltaTime;
         fearCooldown -= Time.deltaTime;
 
         followCooldown += Time.deltaTime;
@@ -46,7 +46,7 @@ public class PoliceAI : MonoBehaviour
 
         #endregion
 
-        if (mode == 1 && cooldown > 10) 
+        if (mode == 1 && cooldown > 10)
         {
             mode = 2;
             gameObject.GetComponent<Unit>().target = waypoints[currentWaypoint];
@@ -82,7 +82,7 @@ public class PoliceAI : MonoBehaviour
         if (fearCooldown < 0)
         {
             fearManager.IncreaseForBeingNoticed();
+            fearCooldown = 1;
         }
     }
-
 }
