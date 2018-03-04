@@ -26,7 +26,8 @@ public class Pathfinding : MonoBehaviour {
 		Node startNode = grid.NodeFromWorldPoint(startPos);
 		Node targetNode = grid.NodeFromWorldPoint(targetPos);
 
-        //if (!startNode.walkable) startNode.walkable = true;
+        if (!startNode.walkable) startNode.walkable = true;
+        print(startNode.walkable);
 		
 		if (startNode.walkable && targetNode.walkable) {
 			Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
@@ -61,7 +62,7 @@ public class Pathfinding : MonoBehaviour {
 		}
 		yield return null;
 		if (pathSuccess) {
-            //print("found path");
+            print("found path");
 			waypoints = RetracePath(startNode,targetNode);
 		}
 		requestManager.FinishedProcessingPath(waypoints,pathSuccess);
