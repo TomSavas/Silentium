@@ -73,8 +73,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1519630735166878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.66, y: 1.15, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: -11.33, y: 1.15, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4613277743351510}
   m_Father: {fileID: 0}
@@ -116,7 +116,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.2, y: 0.2}
+    oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.2, y: 0.2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -124,15 +124,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.049999997, y: 0.099999994}
-      - {x: -0.099999994, y: 0.044999998}
-      - {x: -0.099999994, y: -0.03}
-      - {x: -0.074999996, y: -0.085}
-      - {x: -0.065, y: -0.099999994}
-      - {x: 0.06, y: -0.099999994}
-      - {x: 0.099999994, y: -0.074999996}
-      - {x: 0.099999994, y: 0.055}
-      - {x: 0.049999997, y: 0.099999994}
+    - - {x: 0.014835358, y: 0.0882355}
+      - {x: -0.011431376, y: 0.090096794}
+      - {x: -0.039377533, y: 0.052747052}
+      - {x: -0.06381067, y: 0.040387154}
+      - {x: -0.122278534, y: 0.03550303}
+      - {x: -0.15257232, y: 0.033810496}
+      - {x: -0.17401855, y: -0.011666616}
+      - {x: -0.15009658, y: -0.056286316}
+      - {x: -0.04781437, y: -0.06410086}
+      - {x: -0.041113537, y: -0.0836769}
+      - {x: 0.03798803, y: -0.08803302}
+      - {x: 0.0551548, y: -0.060834885}
+      - {x: 0.11410078, y: -0.06781457}
+      - {x: 0.16123804, y: -0.040387195}
+      - {x: 0.15876198, y: 0.022766232}
+      - {x: 0.12343343, y: 0.04578988}
+      - {x: 0.05381044, y: 0.051721893}
 --- !u!60 &60874634362483072
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -222,6 +230,7 @@ MonoBehaviour:
   speed: 0.05
   health: 1
   damage: 1
+  isAlive: 1
 --- !u!114 &114200804657983758
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,9 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d33a9b2b7f6b942ba39cc6b52884b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  District: {fileID: 0}
   currentWaypoint: 0
   mode: 0
   player: {fileID: 0}
@@ -343,8 +350,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9636060f52d404c40ba0eaca1509b66f, type: 3}
+  m_Color: {r: 0.7607843, g: 0.7607843, b: 0.7607843, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

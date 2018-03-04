@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PoliceAI : MonoBehaviour
 {
+	public GameObject District;
 
     #region variables
-    public List<Transform> waypoints;
+	List<Transform> allWaypoints;  
+	List<Transform> waypoints = new List<Transform>();
     public int currentWaypoint = 0;
+	int waypointsCapacity = 0;
     float speed = 3f;
     public int mode = 0;
     float cooldown = 0;
@@ -16,13 +20,44 @@ public class PoliceAI : MonoBehaviour
     public GameObject Vision;
     float followCooldown;
     float fearCooldown=0;
-    FearManager fearManager;
+    public FearManager fearManager;
     #endregion
 
     void Start()
     {
         gameObject.GetComponent<Unit>().PathEnd += OnPathEnd;
-        
+		allWaypoints = District.GetComponentsInChildren<Transform> ().ToList();
+
+		int randomCounter = (int)((Time.time) % 20f) + 12;
+		Debug.Log (randomCounter);
+		Vector3 currentPosition = this.transform.position;
+
+		for (int i = 0; i < 30; ++i) {
+			//Random rnd = new System.Random();
+			//Debug.Log (i);
+			int randomIndex = (int)UnityEngine.Random.Range(0, allWaypoints.Capacity - 2);
+			//Debug.Log (allWaypoints.Capacity);
+			//Debug.Log (randomIndex);
+			bool con = true;
+			for (int j = randomIndex + 1; j < allWaypoints.Capacity && con; j++) {
+				//Debug.Log (i + " " + j);
+				//Debug.Log ("current position " + currentPosition.x + " " + currentPosition.y);
+				//Debug.Log ("this waypoint position" + allWaypoints [j].transform.position.x + " " + allWaypoints [j].transform.position.y);
+				if (Mathf.Abs (currentPosition.x - allWaypoints [j].transform.position.x) < 1 || Mathf.Abs (currentPosition.y - allWaypoints [j].transform.position.y) < 1) {
+					if (Vector3.Distance (currentPosition, allWaypoints [j].transform.position) < 10) {
+						//Debug.Log (i + " " + j);
+						//Debug.Log ("this waypoint position" + allWaypoints [j].transform.position.x + " " + allWaypoints [j].transform.position.y);
+						//Debug.Log ("current position " + currentPosition.x + " " + currentPosition.y);
+						//Debug.Log ("found");
+						waypoints.Add (allWaypoints[j]);
+						waypointsCapacity++;
+						currentPosition = allWaypoints [j].transform.position;
+						con = false;
+					}
+				}
+
+			}
+		}
     }
 
     // Update is called once per frame
