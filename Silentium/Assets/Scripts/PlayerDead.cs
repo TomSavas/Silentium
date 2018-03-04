@@ -34,11 +34,11 @@ public class PlayerDead : MonoBehaviour {
         GameObject.FindGameObjectWithTag("Player").GetComponent<MainCharacterMovement>().enabled = false;
         foreach (var ai in list)
         {
-            ai.GetComponent<PoliceAI>().enabled = false;
-            ai.GetComponent<PoliceShoot>().enabled = false;
-            ai.GetComponent<CivilianAI>().enabled = false;
+            if(ai.GetComponent<PoliceAI>()!=null) ai.GetComponent<PoliceAI>().enabled = false;
+            if (ai.GetComponent<PoliceAI>() != null) ai.GetComponent<PoliceShoot>().enabled = false;
+            if (ai.GetComponent<CivilianAI>() != null) ai.GetComponent<CivilianAI>().enabled = false;
         }
-        timer = 2;
+        timer = 0;
         //Time.timeScale = 0;
     }
     
