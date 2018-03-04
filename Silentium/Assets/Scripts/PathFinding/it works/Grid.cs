@@ -36,8 +36,8 @@ public class Grid : MonoBehaviour {
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
                 //print(worldPoint);
                 worldPoint = new Vector3(worldPoint.x, worldPoint.y, 0);
-				bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
-                //var occupied = Physics2D.OverlapCircleAll(worldPoint, nodeRadius, LayerMask.NameToLayer("NPC")).Length != 0;
+				//bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
+				var walkable = !(Physics2D.OverlapCircleAll(worldPoint, nodeRadius, unwalkableMask).Length > 0);
                 grid[x,y] = new Node(walkable, worldPoint, x,y);
 
             }
