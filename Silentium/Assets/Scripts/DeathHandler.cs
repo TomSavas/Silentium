@@ -30,7 +30,7 @@ public class DeathHandler : MonoBehaviour {
 		gameObject.transform.parent.gameObject.tag = "Untagged";
 		gameObject.transform.parent.gameObject.layer = 0;
 		var particleSystem = Instantiate (screamSoundParticles, transform);
-		StartCoroutine (EmitMultipleWaves (particleSystem, Random.Range(0, 5)));
+		StartCoroutine (EmitMultipleWaves (particleSystem, Random.Range(0, 2)));
 	}
 
 	private IEnumerator EmitMultipleWaves(ParticleSystem particleSystem, int waveCount) {

@@ -17,6 +17,7 @@ public class CivilianAI : MonoBehaviour {
 	public int panicCooldown;
     public bool goingBack=false;
     public GameObject Grid;
+    public FearManager fearManager;
 
 	public GameObject Vision;
 
@@ -86,6 +87,7 @@ public class CivilianAI : MonoBehaviour {
 
 	public void TriggerPanic() {
 		if (!triggered) {
+            fearManager.IncreaseForBeingNoticed();
 			speed *= 2;
 			triggered = true;
 			currentWaypoint--;
