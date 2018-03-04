@@ -8,5 +8,9 @@ public class VisionTrigger : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Player"))
 			Civilian.TriggerPanic ();
-	}
+        if (other.gameObject.CompareTag("Body"))
+        {
+
+        }
+    }
 }
