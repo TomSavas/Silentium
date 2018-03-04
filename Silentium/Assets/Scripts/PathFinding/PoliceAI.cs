@@ -15,6 +15,8 @@ public class PoliceAI : MonoBehaviour
     public bool seePlayer = false;
     public GameObject Vision;
     float followCooldown;
+    float fearCooldown=0;
+    FearManager fearManager;
     #endregion
 
     void Start()
@@ -27,6 +29,8 @@ public class PoliceAI : MonoBehaviour
     void FixedUpdate()
     {
         if(!seePlayer)cooldown += Time.deltaTime;
+        fearCooldown -= Time.deltaTime;
+
         followCooldown += Time.deltaTime;
         #region Waypoints (mode 0)
         if (mode == 0)
@@ -74,6 +78,10 @@ public class PoliceAI : MonoBehaviour
             seePlayer = true;
             mode = 1;
             followCooldown = 0;
+        }
+        if (fearCooldown < 0)
+        {
+            fearManager.IncreaseForBeingNoticed();
         }
     }
 
