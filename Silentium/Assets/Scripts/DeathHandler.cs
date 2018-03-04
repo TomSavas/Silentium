@@ -18,7 +18,7 @@ public class DeathHandler : MonoBehaviour {
 		Destroy (this.gameObject.transform.parent.gameObject.GetComponent<CivilianAI> ());
 		Destroy (this.gameObject.transform.parent.gameObject.GetComponent<SoundTrigger> ());
 		Destroy (this.gameObject.transform.parent.gameObject.GetComponent<Unit> ());
-		Destroy (this.gameObject.transform.parent.gameObject, _audioSource.clip.length);
+		Destroy (this.gameObject.transform.parent.gameObject.GetComponentInChildren<VisionTrigger> ().gameObject);
 	}
 
 	private void Scream() {

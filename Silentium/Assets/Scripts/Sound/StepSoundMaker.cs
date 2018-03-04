@@ -53,7 +53,7 @@ public class StepSoundMaker : SoundMaker {
 
 	public void EnableRunningSteps() {
 		var mainParticles = _particleSystem.main;
-		mainParticles.startLifetime = new ParticleSystem.MinMaxCurve(_particleSystem.main.startLifetime.constant * 2f);
+		mainParticles.startLifetime = new ParticleSystem.MinMaxCurve(_particleSystem.main.startLifetime.constant * 1.25f);
 		SteppingFrequency = SteppingFrequency * 1.25f;
 	}
 
