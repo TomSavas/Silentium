@@ -88,8 +88,9 @@ public class CivilianAI : MonoBehaviour {
 	public void TriggerPanic() {
 		if (!triggered) {
             fearManager.IncreaseForBeingNoticed();
-			speed *= 2;
-			triggered = true;
+            //speed *= 2;
+            gameObject.GetComponent<Unit>().speed *= 2;
+            triggered = true;
 			currentWaypoint--;
 			if (currentWaypoint < 0) {
 				currentWaypoint = waypointsCapacity - 1;
@@ -109,8 +110,9 @@ public class CivilianAI : MonoBehaviour {
 
 	public void ResetPanic() {
 		if (triggered) {
-			speed /= 2;
-			triggered = false;
+            //speed /= 2;
+            gameObject.GetComponent<Unit>().speed /= 2;
+            triggered = false;
             goingBack = true;
             gameObject.GetComponent<Unit>().target = waypoints[currentWaypoint];
             gameObject.GetComponent<Unit>().PathFindToTarget();

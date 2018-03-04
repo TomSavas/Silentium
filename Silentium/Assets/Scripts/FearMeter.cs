@@ -8,7 +8,6 @@ public class FearMeter : MonoBehaviour {
 	}
 
 	public void Display(float percentage) {
-        print(percentage);
 		var scale = GetComponent<Transform> ().localScale;
 		GetComponent<Transform> ().localScale = new Vector3 (percentage, scale.y, scale.z);
 	}

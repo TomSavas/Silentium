@@ -5,7 +5,7 @@ public class Unit : MonoBehaviour {
 
 
 	public Transform target;
-	float speed = 3;
+	public float speed = 3;
 	Vector3[] path;
 	int targetIndex;
     public PoliceAI policeAi;

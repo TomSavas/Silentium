@@ -7,6 +7,7 @@ public class PoliceShoot : MonoBehaviour {
     bool canSeePlayer=false;
     float shootCooldown = 0;
     public GameObject bullet;
+    public GameObject Player;
     // Use this for initialization
     void Start () {
         
@@ -34,6 +35,7 @@ public class PoliceShoot : MonoBehaviour {
         {
             GameObject temp = Instantiate(bullet,new Vector3(transform.position.x, transform.position.y), Quaternion.Euler(0,0,transform.rotation.eulerAngles.z + 90));
             Physics2D.IgnoreCollision(temp.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+            temp.GetComponent<Bullet>().Player = Player;
             //Physics2D.IgnoreCollision(temp.GetComponent<BoxCollider2D>(), gameObject.GetComponentInChildren<BoxCollider2D>(), true);
             shootCooldown = 1f;
         }

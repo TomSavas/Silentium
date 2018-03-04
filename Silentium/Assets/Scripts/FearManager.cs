@@ -17,11 +17,12 @@ public class FearManager : MonoBehaviour {
 		UpdateLastTimeIncreased ();
 	}
 	
-	private void Update () {
-		if(Time.time - _lastTimeIncreased > 5) 
+	void Update () {
+		if(Time.time - _lastTimeIncreased > 5 && _fearLevel>0) 
 			AddToFearLevel (-FearDecreaseRate * Time.deltaTime);
 		
 		_fearMeters.ForEach(meter => meter.Display(_fearLevel));
+        print(_fearLevel);
 	}
 
 	private void AddToFearLevel(float diff) { 
@@ -30,7 +31,7 @@ public class FearManager : MonoBehaviour {
 		}
 
         //_fearLevel = Mathf.Clamp01 (_fearLevel + diff);
-        _fearLevel = _fearLevel + diff / 200;
+        _fearLevel += diff / 150;
     }
 
 	private void UpdateLastTimeIncreased() {
