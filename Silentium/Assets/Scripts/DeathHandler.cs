@@ -15,6 +15,7 @@ public class DeathHandler : MonoBehaviour {
 	public void ExecuteDeathActions() {
 		Scream ();
 		EmitSoundParticles ();
+		PlayDeathAnimation ();
 		Destroy (this.gameObject.transform.parent.gameObject.GetComponent<CivilianAI> ());
 		Destroy (this.gameObject.transform.parent.gameObject.GetComponent<SoundTrigger> ());
 		Destroy (this.gameObject.transform.parent.gameObject.GetComponent<Unit> ());
@@ -31,6 +32,10 @@ public class DeathHandler : MonoBehaviour {
 		gameObject.transform.parent.gameObject.layer = 0;
 		var particleSystem = Instantiate (screamSoundParticles, transform);
 		StartCoroutine (EmitMultipleWaves (particleSystem, Random.Range(0, 2)));
+	}
+
+	private void PlayDeathAnimation() {
+		GetComponentInParent<Animator> ().SetBool ("Die", true);
 	}
 
 	private IEnumerator EmitMultipleWaves(ParticleSystem particleSystem, int waveCount) {

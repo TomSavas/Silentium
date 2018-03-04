@@ -5,7 +5,14 @@ using UnityEngine;
 public class PlayerAttackingBehaviour : MonoBehaviour {
 	public Animator slash;
 
+	private Vector3 _startingPos;
+
+	private void Start() {
+		_startingPos = slash.transform.localPosition;
+	}
+
 	private void Update() {
+		slash.transform.localPosition = _startingPos;
 		if (slash.IsInTransition (0)) {
 			Destroy (slash.gameObject.GetComponent<PolygonCollider2D> ());
 			var polyCollider = slash.gameObject.AddComponent<PolygonCollider2D> ();
