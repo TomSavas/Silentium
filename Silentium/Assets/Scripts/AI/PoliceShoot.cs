@@ -5,7 +5,8 @@ using UnityEngine;
 public class PoliceShoot : MonoBehaviour {
 
     bool canSeePlayer=false;
-    float timeToShoot = 0;
+    float shootCooldown = 0;
+    public GameObject bullet;
     // Use this for initialization
     void Start () {
         
@@ -13,6 +14,8 @@ public class PoliceShoot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update() {
+        shootCooldown -= Time.deltaTime;
+
         int layer1 = 8;
         int layer2 = 11;
         int layermask1 = 1 << layer1;
@@ -27,15 +30,12 @@ public class PoliceShoot : MonoBehaviour {
         }
         else canSeePlayer = false;
 
-        if (canSeePlayer)
+        if (canSeePlayer && shootCooldown<0)
         {
-            timeToShoot += Time.deltaTime;
-        }
-        else timeToShoot = 0;
-
-        if (timeToShoot>1)
-        {
-            print("DEAD");
+            GameObject temp = Instantiate(bullet,new Vector3(transform.position.x, transform.position.y), Quaternion.Euler(0,0,transform.rotation.eulerAngles.z + 90));
+            Physics2D.IgnoreCollision(temp.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>(), true);
+            //Physics2D.IgnoreCollision(temp.GetComponent<BoxCollider2D>(), gameObject.GetComponentInChildren<BoxCollider2D>(), true);
+            shootCooldown = 1f;
         }
 	}
 }
