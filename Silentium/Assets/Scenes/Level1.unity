@@ -35556,6 +35556,11 @@ Prefab:
       propertyPath: InitialFearLevel
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114476715822906366, guid: 1b7b5f5493ed8134aa9796834548a84d,
+        type: 2}
+      propertyPath: FearDecreaseRate
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b7b5f5493ed8134aa9796834548a84d, type: 2}
   m_IsPrefabParent: 0
@@ -38119,6 +38124,14 @@ Prefab:
       propertyPath: fearManager
       value: 
       objectReference: {fileID: 1428338788}
+    - target: {fileID: 4237764919069962, guid: 5882143a5e24bd74a818ac678b605be5, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237764919069962, guid: 5882143a5e24bd74a818ac678b605be5, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5882143a5e24bd74a818ac678b605be5, type: 2}
   m_IsPrefabParent: 0
