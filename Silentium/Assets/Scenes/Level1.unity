@@ -48580,6 +48580,17 @@ Prefab:
       propertyPath: ShootingTarget
       value: 
       objectReference: {fileID: 1142125037}
+    - target: {fileID: 114892874137168234, guid: 5f1b92dcb51624ef6b0f4d22085705c8,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 17f8a4333a8060b489a64e956a5f7ff1,
+        type: 3}
+    - target: {fileID: 114642699221927130, guid: 5f1b92dcb51624ef6b0f4d22085705c8,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 24
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f1b92dcb51624ef6b0f4d22085705c8, type: 2}
   m_IsPrefabParent: 0

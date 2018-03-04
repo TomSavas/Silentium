@@ -15,11 +15,11 @@ public class TextSmooth : MonoBehaviour {
 		GetComponent<Text>().text = "";
 
 		story = new LinkedList<string>();
-		/*
-		story.AddLast ("Dark times were upon this world. Terror and despair pledged our lands. Earth, water and air were all divided into two. One - ruled by the cruel and mighty emperor Desaix. Other - taken over by ruthless king Berkut. Both rulers dispised eachother and seeked to conquer the lands that were not yet their's. Five years ago, the war finally broke out and majority of humankind was wiped out.");
-		story.AddLast ("Now, even though the fights are not as intense, they can still change the outcome of war.");
+
+		//story.AddLast ("JACK: Do you seriously believe in such things like hope? It is ridiculous. You all are horribly wrong thinking that by simply hoping for something will bring it to you. Why don‘t you take it? Grab it. Hold it like your life depends on it. Take it into your own hands and lock it up with several chains, so it would never escape into the madness again.");
+		/*story.AddLast ("Now, even though the fights are not as intense, they can still change the outcome of war.");
 		story.AddLast ("Jesse: Ahhhh... Captain, even if we managed to steal the intel we came here for, I fear that we won't make it back to the capital. Our ship is sinking at a rapid pace. ");
-		story.AddLast ("Captain Loyd: Damn it. No information is worth it if we have to sacrifice our brothers.");
+		/*story.AddLast ("Captain Loyd: Damn it. No information is worth it if we have to sacrifice our brothers.");
 		story.AddLast ("Jesse: There's nothing you can do now. I'm sorry...");
 		story.AddLast ("Captain Loyd: Keep your crying for later. We're not dead yet. You said our submarine was sinking, didn't you?");
 		story.AddLast ("Jesse: Y-yes, I did, but...");
@@ -45,8 +45,8 @@ public class TextSmooth : MonoBehaviour {
 		story.AddLast ("Jesse: I think I got it Captain.");
 		story.AddLast ("Captain Loyd: Perfect. Now, let's run from our graves. My beloved Lavaiathan will take us home tonight. ");
 		*/
-		now_writing_text = "Press spacebar to read the story.";
-		StartCoroutine (Print ("Press spacebar to read the story."));
+		now_writing_text = "JACK: Do you seriously believe in such things like hope? It is ridiculous. You all are horribly wrong thinking that by simply hoping for something will bring it to you. Why don‘t you take it? Grab it. Hold it like your life depends on it. Take it into your own hands and lock it up with several chains, so it would never escape into the madness again.";
+		StartCoroutine (Print ("JACK: Do you seriously believe in such things like hope? It is ridiculous. You all are horribly wrong thinking that by simply hoping for something will bring it to you. Why don‘t you take it? Grab it. Hold it like your life depends on it. Take it into your own hands and lock it up with several chains, so it would never escape into the madness again."));
 
 	}
 
