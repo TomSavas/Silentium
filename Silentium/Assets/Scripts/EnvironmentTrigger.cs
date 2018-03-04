@@ -19,13 +19,14 @@ public class EnvironmentTrigger : MonoBehaviour {
 
 	public void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.CompareTag ("Player") && firstTrigger) {
-			Debug.Log ("triggered");
+			//Debug.Log ("triggered");
 			firstTrigger = false;
 			gameObject.GetComponent<SoundMaker> ().MakeSound ();
 			//Debug.Log ("try to equip");
 			gameObject.transform.position = new Vector3 (2000, 2000, 0);
 
 			PlayerShooting.GetComponent<ShootingBehaviour>().Equip(EnvironmentPiece);
+			gameObject.GetComponent<AudioSource>().Play ();
 			//Debug.Log ("equip");
 
 		}
