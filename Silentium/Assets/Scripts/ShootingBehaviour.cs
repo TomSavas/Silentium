@@ -8,7 +8,7 @@ public class ShootingBehaviour : MonoBehaviour {
 	public GameObject Player;
 	public float aimingSpeed = 0.5f;
 	public GameObject equipedObject;
-	bool equiped = false;
+	public bool equiped = false;
 
 
 	// Use this for initialization
