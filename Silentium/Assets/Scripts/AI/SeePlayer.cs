@@ -14,5 +14,10 @@ public class SeePlayer : MonoBehaviour {
             Police.seePlayer = true;
         }
         else Police.seePlayer = false;
+
+        if (other.gameObject.CompareTag("Body"))
+        {
+
+        }
     }
 }

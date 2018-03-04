@@ -29,8 +29,9 @@ public class FearManager : MonoBehaviour {
 			UpdateLastTimeIncreased ();
 		}
 
-		_fearLevel = Mathf.Clamp01 (_fearLevel + diff);
-	}
+        //_fearLevel = Mathf.Clamp01 (_fearLevel + diff);
+        _fearLevel = _fearLevel + diff / 200;
+    }
 
 	private void UpdateLastTimeIncreased() {
 		_lastTimeIncreased = Time.time;
