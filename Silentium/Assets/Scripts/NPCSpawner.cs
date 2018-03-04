@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 
 public class NPCSpawner : MonoBehaviour {
+	public GameObject District;
 	public GameObject NPCPrefab;
 	public int maxNPCCount;
 	public float spawnInterval;
@@ -29,6 +30,7 @@ public class NPCSpawner : MonoBehaviour {
 		CheckForDeadNpcs ();
 		if (_npcs.Count < maxNPCCount) {
 			var npc = Instantiate (NPCPrefab);
+			npc.GetComponent<CivilianAI> ().District = District;
 			npc.transform.position = this.transform.position;
 			_npcs.Add (npc);
 		}
