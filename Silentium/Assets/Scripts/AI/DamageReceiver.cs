@@ -9,16 +9,10 @@ public class DamageReceiver : MonoBehaviour {
 		_personStats = GetComponent<PersonStats> ();
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision) {
-		Debug.Log (collision.gameObject.tag);
-		if (collision.gameObject.CompareTag ("Weapon")) {
-			_personStats.health -= collision.gameObject.GetComponentInParent<PersonStats> ().damage;
-		}
-	}
-
-	private void Update () {
-		if (_personStats.health <= 0) {
-			Destroy (this.gameObject);
+	private void OnTriggerEnter2D(Collider2D collider) {
+		Debug.Log (collider.gameObject.tag);
+		if (collider.gameObject.CompareTag ("Weapon")) {
+			_personStats.health -= collider.gameObject.GetComponentInParent<PersonStats> ().damage;
 		}
 	}
 }

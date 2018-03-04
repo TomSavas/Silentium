@@ -29,4 +29,11 @@ public class PersonStats : MonoBehaviour {
 	public void SetSpeed(float speed) {
 		this.speed = speed;
 	}
+
+	public void Update() {
+		if (isAlive && health <= 0) {
+			isAlive = false;
+			GetComponentInChildren<DeathHandler> ().ExecuteDeathActions ();
+		}
+	}
 }
