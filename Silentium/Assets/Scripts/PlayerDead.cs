@@ -39,6 +39,7 @@ public class PlayerDead : MonoBehaviour {
             if (ai.GetComponent<CivilianAI>() != null) ai.GetComponent<CivilianAI>().enabled = false;
         }
         timer = 0;
+		Application.LoadLevel ("Death");
         //Time.timeScale = 0;
     }
     
