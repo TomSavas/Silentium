@@ -208,6 +208,7 @@ MonoBehaviour:
   speed: 0.05
   health: 1
   damage: 1
+  isAlive: 1
 --- !u!114 &114909438543973124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  vision: {fileID: 1531536690053486}
+  policeAi: {fileID: 0}
 --- !u!114 &114936706154156554
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,7 +239,7 @@ MonoBehaviour:
   currentWaypoint: 0
   speed: 3
   triggered: 0
-  panicCooldown: 10
+  panicCooldown: 3
   goingBack: 0
   Grid: {fileID: 0}
   Vision: {fileID: 1531536690053486}

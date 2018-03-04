@@ -12,6 +12,7 @@ public class PersonStats : MonoBehaviour {
 	public float speed = DEFAULT_WALKING_SPEED;
 	public int health = DEFAULT_HEALTH;
 	public int damage = DEFAULT_HEALTH;
+	public bool isAlive = true;
 
 	public void SetWalkingSpeed() {
 		SetSpeed (DEFAULT_WALKING_SPEED);
