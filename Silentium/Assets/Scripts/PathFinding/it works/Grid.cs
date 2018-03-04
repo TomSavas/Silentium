@@ -34,9 +34,7 @@ public class Grid : MonoBehaviour {
 		for (int x = 0; x < gridSizeX; x ++) {
 			for (int y = 0; y < gridSizeY; y ++) {
 				Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.up * (y * nodeDiameter + nodeRadius);
-                //print(worldPoint);
                 worldPoint = new Vector3(worldPoint.x, worldPoint.y, 0);
-				//bool walkable = !(Physics.CheckSphere(worldPoint,nodeRadius,unwalkableMask));
 				var walkable = !(Physics2D.OverlapCircleAll(worldPoint, nodeRadius, unwalkableMask).Length > 0);
                 grid[x,y] = new Node(walkable, worldPoint, x,y);
 
@@ -71,8 +69,8 @@ public class Grid : MonoBehaviour {
 		percentX = Mathf.Clamp01(percentX);
 		percentY = Mathf.Clamp01(percentY);
 
-		int x = Mathf.RoundToInt((gridSizeX-1) * percentX) - (int)(gridWorldSize.x/4.5f);
-        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY) - (int)(gridWorldSize.y / 4.5f);
+        int x = Mathf.RoundToInt((gridSizeX - 1) * percentX);// - (int)(gridWorldSize.x/4.5f);
+        int y = Mathf.RoundToInt((gridSizeY - 1) * percentY);// - (int)(gridWorldSize.y / 4.5f);
 		return grid[x,y];
 	}
 	
